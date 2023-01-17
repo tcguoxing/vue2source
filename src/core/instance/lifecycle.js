@@ -90,14 +90,14 @@ export function lifecycleMixin (Vue: Class<Component>) {
     // updated in a parent's updated hook.
   }
 
-  Vue.prototype.$forceUpdate = function () {
+  Vue.prototype.$forceUpdate = function () { // update更新方法
     const vm: Component = this
     if (vm._watcher) {
       vm._watcher.update()
     }
   }
 
-  Vue.prototype.$destroy = function () {
+  Vue.prototype.$destroy = function () { // 定义destroy这一方法
     const vm: Component = this
     if (vm._isBeingDestroyed) {
       return

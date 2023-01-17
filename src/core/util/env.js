@@ -38,7 +38,7 @@ let _isServer
 export const isServerRendering = () => {
   if (_isServer === undefined) {
     /* istanbul ignore if */
-    if (!inBrowser && !inWeex && typeof global !== 'undefined') {
+    if (!inBrowser && !inWeex && typeof global !== 'undefined') { // global，nodejs的环境变量。
       // detect presence of vue-server-renderer and avoid
       // Webpack shimming the process
       _isServer = global['process'].env.VUE_ENV === 'server'

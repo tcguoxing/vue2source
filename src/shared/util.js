@@ -135,14 +135,14 @@ export function remove (arr: Array<any>, item: any): Array<any> | void {
  * Check whether the object has the property.
  */
 const hasOwnProperty = Object.prototype.hasOwnProperty
-export function hasOwn (obj: Object | Array<*>, key: string): boolean {
+export function hasOwn (obj: Object | Array<*>, key: string): boolean { // 对对象和数组好用
   return hasOwnProperty.call(obj, key)
 }
 
 /**
  * Create a cached version of a pure function.
  */
-export function cached<F: Function> (fn: F): F {
+export function cached<F: Function> (fn: F): F { // 用处是什么？
   const cache = Object.create(null)
   return (function cachedFn (str: string) {
     const hit = cache[str]

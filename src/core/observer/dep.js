@@ -14,7 +14,7 @@ export default class Dep {
   id: number;
   subs: Array<Watcher>;
 
-  constructor () {
+  constructor () { // 构造器模式
     this.id = uid++
     this.subs = []
   }
@@ -33,9 +33,9 @@ export default class Dep {
     }
   }
 
-  notify () {
+  notify () { // 依赖发生改变，为此更新一下。
     // stabilize the subscriber list first
-    const subs = this.subs.slice()
+    const subs = this.subs.slice() // deep clone
     for (let i = 0, l = subs.length; i < l; i++) {
       subs[i].update()
     }

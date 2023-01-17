@@ -25,8 +25,8 @@ function flushCallbacks () {
 // when state is changed right before repaint (e.g. #6813, out-in transitions).
 // Here we use microtask by default, but expose a way to force (macro) task when
 // needed (e.g. in event handlers attached by v-on).
-let microTimerFunc
-let macroTimerFunc
+let microTimerFunc // 微任务
+let macroTimerFunc // 宏任务
 let useMacroTask = false
 
 // Determine (macro) task defer implementation.

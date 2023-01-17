@@ -22,7 +22,7 @@ let uid = 0
  * and fires callback when the expression value changes.
  * This is used for both the $watch() api and directives.
  */
-export default class Watcher {
+export default class Watcher { // 类模式=构造器模式+原型模式
   vm: Component;
   expression: string;
   cb: Function;
@@ -40,7 +40,7 @@ export default class Watcher {
   getter: Function;
   value: any;
 
-  constructor (
+  constructor ( // 构造器模式
     vm: Component,
     expOrFn: string | Function,
     cb: Function,
@@ -95,7 +95,7 @@ export default class Watcher {
   /**
    * Evaluate the getter, and re-collect dependencies.
    */
-  get () {
+  get () { 
     pushTarget(this)
     let value
     const vm = this.vm
@@ -122,7 +122,7 @@ export default class Watcher {
   /**
    * Add a dependency to this directive.
    */
-  addDep (dep: Dep) {
+  addDep (dep: Dep) { // 方法在原型上的。
     const id = dep.id
     if (!this.newDepIds.has(id)) {
       this.newDepIds.add(id)

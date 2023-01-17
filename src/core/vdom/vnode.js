@@ -70,7 +70,7 @@ export default class VNode {
   }
 }
 
-export const createEmptyVNode = (text: string = '') => {
+export const createEmptyVNode = (text: string = '') => {  // comment node
   const node = new VNode()
   node.text = text
   node.isComment = true
@@ -103,6 +103,6 @@ export function cloneVNode (vnode: VNode): VNode {
   cloned.fnContext = vnode.fnContext
   cloned.fnOptions = vnode.fnOptions
   cloned.fnScopeId = vnode.fnScopeId
-  cloned.isCloned = true
+  cloned.isCloned = true // more this beside
   return cloned
 }
