@@ -2,6 +2,7 @@
 
 import type Watcher from './watcher'
 import { remove } from '../util/index'
+import { extend } from 'lodash';
 
 let uid = 0
 
