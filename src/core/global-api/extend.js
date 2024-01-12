@@ -14,7 +14,7 @@ export function initExtend (Vue: GlobalAPI) {
   let cid = 1
 
   /**
-   * Class inheritance
+   * Class inheritance 
    */
   Vue.extend = function (extendOptions: Object): Function {
     extendOptions = extendOptions || {}
@@ -49,6 +49,7 @@ export function initExtend (Vue: GlobalAPI) {
       initProps(Sub)
     }
     if (Sub.options.computed) {
+      // Sub的原型可以看作是vm，或者this;
       initComputed(Sub)
     }
 
@@ -87,9 +88,24 @@ function initProps (Comp) {
   }
 }
 
+/**
+ * computed: {
+ *  computedVar: {
+ *    dataSource: this.dataSource
+ *  },
+ *  computedFunc() {
+ *    return this.func
+ *  },
+ *  thisComputed: vm => {
+ *    return vm.wow
+ *  }
+ * }
+ */
 function initComputed (Comp) {
   const computed = Comp.options.computed
   for (const key in computed) {
+    // Comp也就是继承后的,11111
     defineComputed(Comp.prototype, key, computed[key])
   }
 }
+

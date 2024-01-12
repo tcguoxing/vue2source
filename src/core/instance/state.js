@@ -210,11 +210,26 @@ function initComputed (vm: Component, computed: Object) {
   }
 }
 
+/**
+ * computed: {
+ *  computedVar: {
+ *    dataSource: this.dataSource
+ *  },
+ *  computedFunc() {
+ *    return this.func
+ *  },
+ *  thisComputed: vm => {
+ *    return vm.wow
+ *  }
+ * }
+ */
+
 export function defineComputed (
-  target: any,
+  target: any, 
   key: string,
   userDef: Object | Function
 ) {
+  // target, the instance
   const shouldCache = !isServerRendering()
   if (typeof userDef === 'function') {
     sharedPropertyDefinition.get = shouldCache
@@ -243,10 +258,11 @@ export function defineComputed (
 
 function createComputedGetter (key) {
   return function computedGetter () {
+    // 寻找watcher
     const watcher = this._computedWatchers && this._computedWatchers[key]
     if (watcher) {
       if (watcher.dirty) {
-        watcher.evaluate()
+        watcher.evaluate()  
       }
       if (Dep.target) {
         watcher.depend()

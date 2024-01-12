@@ -73,7 +73,7 @@ export default class Watcher {
     this.newDeps = []
     this.depIds = new Set()
     this.newDepIds = new Set()
-    this.expression = process.env.NODE_ENV !== 'production'
+    this.expression = process.env.NODE_ENV !== 'production' // 非生产环境就根据表达式和函数来转换；
       ? expOrFn.toString()
       : ''
     // parse expression for getter
