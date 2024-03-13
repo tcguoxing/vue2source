@@ -42,7 +42,7 @@ export function initLifecycle (vm: Component) {
   }
 
   vm.$parent = parent
-  vm.$root = parent ? parent.$root : vm
+  vm.$root = parent ? parent.$root : vm // todo 这里的root通过这里一层一层迭代，如果没有parent，自己就是root
 
   vm.$children = []
   vm.$refs = {}

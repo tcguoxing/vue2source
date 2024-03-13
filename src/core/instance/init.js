@@ -21,9 +21,10 @@ export function initMixin (Vue: Class<Component>) {
     let startTag, endTag
     /* istanbul ignore if */
     if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+      // todo 这里是production，是不是写死了，NODE_ENV为production
       startTag = `vue-perf-start:${vm._uid}`
       endTag = `vue-perf-end:${vm._uid}`
-      mark(startTag)
+      mark(startTag) // todo mark的作用是什么，
     }
 
     // a flag to avoid this being observed
